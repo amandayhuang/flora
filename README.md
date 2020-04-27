@@ -26,18 +26,18 @@ Mon, Apr 27
 * Get familiar with canvas functionality
 * Figure out how to store and access datasets
 
-Tue, Apr 27
+Tue, Apr 28
 * Logic for runnning study sessions
 * Basic HTML framework
 
-Wed, Apr 27
+Wed, Apr 29
 * Assets for plant theme
 * Correct/incorrect visual feedback (i.e. plant gets watered & grows)
 
-Thurs, Apr 27
+Thurs, Apr 30
 * Improving visuals and responsiveness
 
-Fri, Apr 27
+Fri, May 1
 * Debugging, styling, testing
 
 ## Bonus Features
