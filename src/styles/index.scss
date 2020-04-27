@@ -1,0 +1,41 @@
+// VARS
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #acfcb8;
+}
+.app-container{
+    padding: 20px;
+    width:100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.head-container{
+    display: flex;
+
+}
+
+.title{
+    font-family: 'Alegreya', serif;
+    font-size:40px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.title i{
+    transform: rotate(20deg);
+    margin-right: 10px;
+}
+
+.picker{
+
+}
+
+.body-container{
+
+}
