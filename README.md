@@ -1,7 +1,7 @@
 # Flora App
 
 ## Background & Overview
-Flora is an app that makes is more fun for students to memorize common topics likes multiplication tables and state capitals.
+Flora is an app that makes it more fun for students to memorize common topics likes multiplication tables and state capitals.
 
 ## Functionality and MVPs
 * Start a study session
