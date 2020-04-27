@@ -28,7 +28,7 @@ Mon, Apr 27
 
 Tue, Apr 27
 * Logic for runnning study sessions
-* Basic HTMl framework
+* Basic HTML framework
 
 Wed, Apr 27
 * Assets for plant theme
