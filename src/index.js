@@ -3,16 +3,71 @@ import { randomizeData } from './util/util'
 import "./styles/index.scss";
 import Drop from './drop'
 
+//set up canvas
 let canvas = document.querySelector('canvas');
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 const c = canvas.getContext('2d');
 
+// set up vars
+var questionIndex = 0;
+var numCorrect = 0;
+var dataset = [];
+const input = document.getElementById('answer-form');
+const scoreBox = document.getElementById('score-box');
+const questionText = document.getElementById('question-text');
+let currentAnswer = '';
+input.addEventListener('submit', handleSubmit);
 
-let drops = makeDrops();
-makeRain(drops);
+var drops;
+var num = 0;
+// makeRain();
+startSession();
 
+function startSession(){
+    dataset = randomizeData(timesTable, 30);
+    dataset = dataset.slice(0, 30);
+    setQuestion();
+}
 
+function setQuestion(){
+    questionIndex++;
+    questionText.innerHTML = dataset[questionIndex].question;
+    currentAnswer = dataset[questionIndex].answer.toString();
+}
+
+function handleSubmit(e){
+    e.preventDefault();
+    let input = document.getElementById('answer');
+    // let answer = e.srcElement.elements[0].form.elements[0].value;
+    let answer = input.value;
+    input.value = '';
+    debugger;
+    if(answer === currentAnswer){
+        numCorrect ++;
+        drops = makeDrops();
+        makeRain();
+    }else{
+        //incorrect answer visual
+    }
+
+    //update current score
+
+    let percent = Math.round(numCorrect/questionIndex*100);
+    
+    if(questionIndex < dataset.length){
+        scoreBox.innerHTML = `${numCorrect} correct of ${questionIndex} (${percent}%) ${questionIndex}/${dataset.length}`;
+        setQuestion();
+    }else{
+        scoreBox.innerHTML = `Final score: ${numCorrect} correct of ${questionIndex} (${percent}%)`;
+        summarizeAndReset();
+    }
+}
+
+function summarizeAndReset(){
+    questionText.innerHTML = "Good studying! Your plant is grown :)";
+    const summary = document.getElementById('summary');
+}
 
 function makeDrops(){
     let drops = [];
@@ -29,17 +84,25 @@ function makeDrops(){
 
 function makeRain(){
     c.clearRect(0, 0, canvas.width, canvas.height);
-    requestAnimationFrame(makeRain);
-    c.beginPath();
-    c.arc(0, 0, 130, 0, Math.PI * 2, false);
-    c.strokeStyle = 'orange';
-    c.fillStyle = 'orange';
-    c.stroke();
-    c.fill();
-    for (let i = 0; i < drops.length; i++) {
-        const drop = drops[i];
-        drop.update();  
+    if(num < 270){
+        num +=1;
+        requestAnimationFrame(makeRain);
+        console.log(num);
+        c.beginPath();
+        c.arc(0, 0, 130, 0, Math.PI * 2, false);
+        c.strokeStyle = 'orange';
+        c.fillStyle = 'orange';
+        c.stroke();
+        c.fill();
+        for (let i = 0; i < drops.length; i++) {
+            const drop = drops[i];
+            drop.update();
+        }
+    }else{
+        c.clearRect(0, 0, canvas.width, canvas.height);
+        num = 0;
     }
+    
 }
 
 
