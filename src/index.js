@@ -1,7 +1,13 @@
 import timesTable from './datasets/times_table';
+import stateCapitals from './datasets/state_capitals';
 import { randomizeData } from './util/util'
 import "./styles/index.scss";
 import Drop from './drop'
+
+let sets = {
+    "timesTable": timesTable,
+    "stateCapitals": stateCapitals
+}
 
 //set up canvas
 let canvas = document.querySelector('canvas');
@@ -14,19 +20,26 @@ var questionIndex = 0;
 var numCorrect = 0;
 var dataset = [];
 const input = document.getElementById('answer-form');
+const picker = document.getElementById('picker-form');
 const scoreBox = document.getElementById('score-box');
+const previousAnswer = document.getElementById('previous-answer');
 const questionText = document.getElementById('question-text');
 let currentAnswer = '';
 input.addEventListener('submit', handleSubmit);
+picker.addEventListener('submit', handlePicker);
 
 var drops;
 var num = 0;
-// makeRain();
-startSession();
 
-function startSession(){
-    dataset = randomizeData(timesTable, 30);
+
+function startSession(datasetName){
+    numCorrect = 0;
+    questionIndex = 0;
+    debugger
+    dataset = randomizeData(sets[datasetName]);
     dataset = dataset.slice(0, 30);
+    scoreBox.innerHTML = '';
+    previousAnswer.innerHTML = '';
     setQuestion();
 }
 
@@ -36,6 +49,14 @@ function setQuestion(){
     currentAnswer = dataset[questionIndex].answer.toString();
 }
 
+function handlePicker(e){
+    e.preventDefault();
+    const dropdown = document.getElementById('dropdown');
+    if(sets[dropdown.value] !== undefined){
+        startSession(dropdown.value);
+    }
+}
+
 function handleSubmit(e){
     e.preventDefault();
     let input = document.getElementById('answer');
@@ -43,7 +64,7 @@ function handleSubmit(e){
     let answer = input.value;
     input.value = '';
     debugger;
-    if(answer === currentAnswer){
+    if(answer.toLowerCase() === currentAnswer.toLowerCase()){
         numCorrect ++;
         drops = makeDrops();
         makeRain();
@@ -51,14 +72,13 @@ function handleSubmit(e){
         //incorrect answer visual
     }
 
-    //update current score
-
     let percent = Math.round(numCorrect/questionIndex*100);
-    
     if(questionIndex < dataset.length){
         scoreBox.innerHTML = `${numCorrect} correct of ${questionIndex} (${percent}%) ${questionIndex}/${dataset.length}`;
+        previousAnswer.innerHTML = `Previous Answer: ${currentAnswer}`;
         setQuestion();
     }else{
+        previousAnswer.innerHTML = `Previous Answer: ${currentAnswer}`;
         scoreBox.innerHTML = `Final score: ${numCorrect} correct of ${questionIndex} (${percent}%)`;
         summarizeAndReset();
     }

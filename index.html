@@ -25,7 +25,14 @@
                 <i class="fas fa-seedling"></i> flora 
             </div>
             <div class="picker">
-                
+                <form id='picker-form'>
+                    <select id='dropdown'>
+                        <option value='default' disabled="disabled" selected> Select Topic</option>
+                        <option value='timesTable'> Times Table</option>
+                        <option value='stateCapitals'> State Capitals</option>
+                    </select>
+                    <button type="submit">Start Study Session</button>
+                </form>
             </div>
         </div>
 
@@ -43,7 +50,7 @@
             </div>
             <div class="body-right">
                 <div class="question">
-                    <h2 id='question-text'>Welcome to flora, choose a topic above</h2>
+                    <h2 id='question-text'>welcome to flora, choose a topic above</h2>
                 </div>
                 <div class="form" id='answer-form'>
                     <form>
@@ -53,6 +60,7 @@
                 </div>
                 <div class="score">
                     <h3 id="score-box"> <h3>
+                    <h4 id='previous-answer'> </h4>
                 </div>
             </div>
         </div>
