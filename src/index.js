@@ -9,27 +9,39 @@ canvas.width = window.innerWidth;
 const c = canvas.getContext('2d');
 
 
-let drops = [];
-for (let i = 0; i < 60; i++) {
-    let x = Math.random()*canvas.width;
-    let y = Math.random() - Math.random() * 400;
-    let xVel = (Math.random() + 0.5) * 7;
-    let yVel = (Math.random() + 0.5) * 7;
-    let drop = new Drop(x, y, xVel, yVel, 10,c);
-    drops.push(drop);
+let drops = makeDrops();
+makeRain(drops);
+
+
+
+function makeDrops(){
+    let drops = [];
+    for (let i = 0; i < 60; i++) {
+        let x = Math.random()*canvas.width;
+        let y = Math.random() - Math.random() * 400;
+        let xVel = (Math.random() + 0.5) * 7;
+        let yVel = (Math.random() + 0.5) * 7;
+        let drop = new Drop(x, y, xVel, yVel, 10,c);
+        drops.push(drop);
+    }
+    return drops;
 }
 
-function animate(){
+function makeRain(){
     c.clearRect(0, 0, canvas.width, canvas.height);
-    requestAnimationFrame(animate);
+    requestAnimationFrame(makeRain);
+    c.beginPath();
+    c.arc(0, 0, 130, 0, Math.PI * 2, false);
+    c.strokeStyle = 'orange';
+    c.fillStyle = 'orange';
+    c.stroke();
+    c.fill();
     for (let i = 0; i < drops.length; i++) {
         const drop = drops[i];
         drop.update();  
     }
 }
 
-
-animate();
 
 
 

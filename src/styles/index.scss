@@ -137,4 +137,14 @@ body{
     border: none;
     height:30px;
     width:230px;
+    padding:0 10px;
+}
+
+.drop{
+    z-index: 30;
+}
+
+
+canvas{
+    /* z-index: 30; */
 }
