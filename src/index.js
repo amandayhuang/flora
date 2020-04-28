@@ -8,8 +8,10 @@ canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 const c = canvas.getContext('2d');
 
+
 let drops = makeDrops();
 makeRain(drops);
+
 
 
 function makeDrops(){
@@ -28,6 +30,12 @@ function makeDrops(){
 function makeRain(){
     c.clearRect(0, 0, canvas.width, canvas.height);
     requestAnimationFrame(makeRain);
+    c.beginPath();
+    c.arc(0, 0, 130, 0, Math.PI * 2, false);
+    c.strokeStyle = 'orange';
+    c.fillStyle = 'orange';
+    c.stroke();
+    c.fill();
     for (let i = 0; i < drops.length; i++) {
         const drop = drops[i];
         drop.update();  
