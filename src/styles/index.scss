@@ -137,7 +137,7 @@ body{
 .form input{
     border-radius: 6px;
     border: none;
-    height:30px;
+    height:40px;
     width:230px;
     padding:0 10px;
 }
@@ -149,4 +149,33 @@ body{
 
 canvas{
     /* z-index: 30; */
+}
+
+button, select{
+    border:none;
+    padding:5px 12px;
+    box-sizing: border-box;
+    height:40px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    margin:5px;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #7e777c;
+    color:white;
+}
+
+select:hover{
+    cursor: pointer;
+}
+
+#previous{
+    padding:10px;
+    border: 1px solid #4abe67;
+    border-radius: 6px;
+    width: 315px;
+    color: #6d6d6d;
 }
