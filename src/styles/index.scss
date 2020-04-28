@@ -134,12 +134,17 @@ body{
     position: relative;
 }
 
+.form{
+    display:none;
+}
+
 .form input{
     border-radius: 6px;
     border: none;
     height:40px;
     width:230px;
     padding:0 10px;
+    font-size:15px;
 }
 
 .drop{
@@ -160,11 +165,12 @@ button, select{
     font-size: 16px;
     font-weight: 500;
     margin:5px;
+    font-family: 'Manrope', sans-serif;
 }
 
 button:hover{
     cursor: pointer;
-    background-color: #7e777c;
+    background-color: #1f1f1f;
     color:white;
 }
 
@@ -174,8 +180,26 @@ select:hover{
 
 #previous{
     padding:10px;
-    border: 1px solid #4abe67;
+    border: 1px solid #8a8a8a;
     border-radius: 6px;
     width: 315px;
-    color: #6d6d6d;
+    color: #8a8a8a;
+    margin-top:15px;
+}
+
+.previous{
+    display:none;
+}
+
+#previous h4{
+    color: black;
+}
+
+hr{
+    border:none;
+    border-top: 1px solid #8a8a8a;
+}
+
+.active{
+    display: inline-block;
 }

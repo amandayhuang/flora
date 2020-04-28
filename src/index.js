@@ -3,6 +3,7 @@ import stateCapitals from './datasets/state_capitals';
 import { randomizeData } from './util/util'
 import "./styles/index.scss";
 import Drop from './drop'
+import Cloud from './cloud'
 
 let sets = {
     "timesTable": timesTable,
@@ -24,29 +25,37 @@ const picker = document.getElementById('picker-form');
 const scoreBox = document.getElementById('score-box');
 const previousAnswer = document.getElementById('previous-answer');
 const questionText = document.getElementById('question-text');
+const previousBox = document.getElementById('previous');
+const answerForm = document.getElementById('answer-form');
 let currentAnswer = '';
+let currentQuestion = '';
 input.addEventListener('submit', handleSubmit);
 picker.addEventListener('submit', handlePicker);
 
+// canvas
 var drops;
 var num = 0;
+var clouds;
+var cloudNum = 0;
 
 
 function startSession(datasetName){
+    answerForm.classList.add('active');
     numCorrect = 0;
     questionIndex = 0;
-    debugger
     dataset = randomizeData(sets[datasetName]);
-    dataset = dataset.slice(0, 30);
+    dataset = dataset.slice(0, 10);
     scoreBox.innerHTML = '';
     previousAnswer.innerHTML = '';
+    previousBox.classList.remove('active');
     setQuestion();
 }
 
 function setQuestion(){
     questionIndex++;
-    questionText.innerHTML = dataset[questionIndex].question;
-    currentAnswer = dataset[questionIndex].answer.toString();
+    currentQuestion = dataset[questionIndex-1].question;
+    currentAnswer = dataset[questionIndex-1].answer.toString();
+    questionText.innerHTML = `${currentQuestion} (${questionIndex} of ${dataset.length})`;
 }
 
 function handlePicker(e){
@@ -60,31 +69,35 @@ function handlePicker(e){
 function handleSubmit(e){
     e.preventDefault();
     let input = document.getElementById('answer');
+    previousBox.classList.add('active');
     // let answer = e.srcElement.elements[0].form.elements[0].value;
     let answer = input.value;
     input.value = '';
-    debugger;
     if(answer.toLowerCase() === currentAnswer.toLowerCase()){
+        previousAnswer.innerHTML = `${currentQuestion} ✓ ${currentAnswer}`;
         numCorrect ++;
         drops = makeDrops();
         makeRain();
     }else{
+        previousAnswer.innerHTML = `${currentQuestion} ✖ ${currentAnswer}`;
         //incorrect answer visual
+        clouds = makeClouds();
+        makeCloudsAppear();
     }
 
+    
     let percent = Math.round(numCorrect/questionIndex*100);
     if(questionIndex < dataset.length){
-        scoreBox.innerHTML = `${numCorrect} correct of ${questionIndex} (${percent}%) ${questionIndex}/${dataset.length}`;
-        previousAnswer.innerHTML = `Previous Answer: ${currentAnswer}`;
+        scoreBox.innerHTML = `${numCorrect} correct of ${questionIndex} (${percent}%)`;
         setQuestion();
     }else{
-        previousAnswer.innerHTML = `Previous Answer: ${currentAnswer}`;
         scoreBox.innerHTML = `Final score: ${numCorrect} correct of ${questionIndex} (${percent}%)`;
         summarizeAndReset();
     }
 }
 
 function summarizeAndReset(){
+    answerForm.classList.remove('active');
     questionText.innerHTML = "Good studying! Your plant is grown :)";
     const summary = document.getElementById('summary');
 }
@@ -100,6 +113,19 @@ function makeDrops(){
         drops.push(drop);
     }
     return drops;
+}
+
+function makeClouds() {
+    let clouds = [];
+    for (let i = 0; i < 5; i++) {
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height;
+        let xVel = (Math.random() + 0.5) * 3;
+        let yVel = (Math.random() + 0.5) * 3;
+        let cloud = new Cloud(x, y, xVel, yVel, c);
+        clouds.push(cloud);
+    }
+    return clouds;
 }
 
 function makeRain(){
@@ -123,6 +149,21 @@ function makeRain(){
         num = 0;
     }
     
+}
+
+function makeCloudsAppear() {
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    if (cloudNum < 310) {
+        cloudNum += 1;
+        requestAnimationFrame(makeCloudsAppear);
+        for (let i = 0; i < clouds.length; i++) {
+            const cloud = clouds[i];
+            cloud.update();
+        }
+    } else {
+        c.clearRect(0, 0, canvas.width, canvas.height);
+        cloudNum = 0;
+    }
 }
 
 
