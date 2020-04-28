@@ -9,6 +9,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;523;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
@@ -25,7 +27,14 @@
                 <i class="fas fa-seedling"></i> flora 
             </div>
             <div class="picker">
-                
+                <form id='picker-form'>
+                    <select id='dropdown'>
+                        <option value='default' disabled="disabled" selected> Select Topic</option>
+                        <option value='timesTable'> Times Table</option>
+                        <option value='stateCapitals'> State Capitals</option>
+                    </select>
+                    <button type="submit">Start Study Session</button>
+                </form>
             </div>
         </div>
 
@@ -33,7 +42,7 @@
             <div class="body-left">
             <!-- <canvas class="inner-canvas"></canvas>     -->
                 <div class="plant">
-                    <img class="pot" src="/src/images/pot_1.png">
+                    <img class="pot" src="/src/images/pot_2.png">
                     <img class="leaf l1" src="/src/images/monstera_1.png">
                     <img class="leaf l2" src="/src/images/monstera_2.png">
                     <img class="leaf l3" src="/src/images/monstera_2.png">
@@ -43,15 +52,22 @@
             </div>
             <div class="body-right">
                 <div class="question">
-                    <h2>What is the capital of Hawaii?</h2>
+                    <h2 id='question-text'>welcome to flora, choose a topic above</h2>
                 </div>
-                <div class="form">
+                <div class="form" id='answer-form'>
                     <form>
                         <input type="text" id='answer'>
+                        <button type='submit'>Submit</button>
                     </form>
                 </div>
                 <div class="score">
-                    <h3> 4 correct of 6 questions (67%) <h3>
+                    <h3 id="score-box"> <h3>
+                    
+                </div>
+                <div id='previous' class='previous'>
+                Previous
+                <hr>
+                <h4 id='previous-answer'></h4>
                 </div>
             </div>
         </div>

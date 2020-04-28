@@ -32,6 +32,7 @@ body{
     display: flex;
     width:100%;
     justify-content: center;
+    align-items: center;
 }
 
 .title{
@@ -48,8 +49,8 @@ body{
     font-size:40px;
 }
 
-.picker{
-
+#picker-form{
+    margin-left:20px;
 }
 
 .body-container{
@@ -69,13 +70,14 @@ body{
 }
 
 .leaf{
-    width: 150px;
+    height: 280px;
     position: absolute;
     z-index: 20;
 }
 
 .l1{
     transform: rotate(-20deg);
+    top:-10px;
     /* visibility: hidden;
     opacity: 0; */
 }
@@ -83,18 +85,18 @@ body{
 .l2{
     transform: rotate(10deg);
     left:60px;
-    top:45px;
+    top:10px;
 }
 
 .l3{
     transform: rotate(-80deg);
-    left:0px;
-    top:35px;
+    left:-50px;
+    top:0px;
 }
 
 .l4{
     transform: rotate(60deg);
-    top:55px;
+    top:35px;
     left:90px;
     /* transform: scaleX(-1); */
 }
@@ -132,12 +134,17 @@ body{
     position: relative;
 }
 
+.form{
+    display:none;
+}
+
 .form input{
     border-radius: 6px;
     border: none;
-    height:30px;
+    height:40px;
     width:230px;
     padding:0 10px;
+    font-size:15px;
 }
 
 .drop{
@@ -147,4 +154,52 @@ body{
 
 canvas{
     /* z-index: 30; */
+}
+
+button, select{
+    border:none;
+    padding:5px 12px;
+    box-sizing: border-box;
+    height:40px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    margin:5px;
+    font-family: 'Manrope', sans-serif;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #1f1f1f;
+    color:white;
+}
+
+select:hover{
+    cursor: pointer;
+}
+
+#previous{
+    padding:10px;
+    border: 1px solid #8a8a8a;
+    border-radius: 6px;
+    width: 315px;
+    color: #8a8a8a;
+    margin-top:15px;
+}
+
+.previous{
+    display:none;
+}
+
+#previous h4{
+    color: black;
+}
+
+hr{
+    border:none;
+    border-top: 1px solid #8a8a8a;
+}
+
+.active{
+    display: inline-block;
 }
