@@ -1,24 +1,52 @@
 import timesTable from './datasets/times_table';
 import { randomizeData } from './util/util'
 import "./styles/index.scss";
+import Drop from './drop'
 
-console.log(timesTable[0]);
-console.log("hello!!");
+let canvas = document.querySelector('canvas');
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+const c = canvas.getContext('2d');
 
-window.addEventListener("DOMContentLoaded", () =>{
-    const header = document.createElement("h1");
-    // document.body.append(header);
-    // header.innerHTML = "Hello friend";
-});
+
+let drops = [];
+for (let i = 0; i < 60; i++) {
+    let x = Math.random()*canvas.width;
+    let y = Math.random() - Math.random() * 400;
+    let xVel = (Math.random() + 0.5) * 7;
+    let yVel = (Math.random() + 0.5) * 7;
+    let drop = new Drop(x, y, xVel, yVel, 10,c);
+    drops.push(drop);
+}
+
+function animate(){
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    requestAnimationFrame(animate);
+    for (let i = 0; i < drops.length; i++) {
+        const drop = drops[i];
+        drop.update();  
+    }
+}
+
+
+animate();
+
 
 
 // window.addEventListener("DOMContentLoaded", () => {
-//     document.body.classList.add("center");
-//     const card = document.createElement("div");
-//     card.classList.add("card", "center");
-//     card.innerHTML = `<h2>Hello World!</h2>`;
-//     document.body.append(card);
-//     const imgCard = document.createElement("div");
-//     imgCard.classList.add("card", "center", "image-card");
-//     document.body.appendChild(imgCard);
+//     const header = document.createElement("h1");
+//     let canvas = document.querySelector('canvas');
+//     const c = canvas.getContext('2d');
+//     c.fillStyle = "pink";
+//     c.fillRect(100,100,50,50);
+//     c.fillRect(10, 10, 30, 30);
+//     c.fillRect(20, 20, 30, 30);
+//     c.fillRect(30, 30, 30, 30);
+//     c.beginPath();
+//     c.moveTo(50,80);
+//     c.lineTo(80,190);
+//     c.strokeStyle = "pink";
+//     c.stroke();
+//     document.body.append(header);
+//     header.innerHTML = "Hello friend";
 // });

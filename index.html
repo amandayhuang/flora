@@ -11,12 +11,14 @@
     rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
     <title>Flora</title>
 </head>
 
 <body>
-    <script src="./dist/main.js"></script>
-
+<div class="container">
+    <canvas class="outer-canvas">
+    </canvas>
     <div class="app-container">
         <div class="head-container">
             <div class="title">
@@ -29,15 +31,35 @@
 
         <div class="body-container">
             <div class="body-left">
-                
+            <!-- <canvas class="inner-canvas"></canvas>     -->
+                <div class="plant">
+                    <img class="pot" src="/src/images/pot_1.png">
+                    <img class="leaf l1" src="/src/images/monstera_1.png">
+                    <img class="leaf l2" src="/src/images/monstera_2.png">
+                    <img class="leaf l3" src="/src/images/monstera_2.png">
+                    <img class="leaf l4" src="/src/images/monstera_1.png">
+                </div>
+                <div class="score">
+                    <h3> 5/6 <h3>
+                </div>
             </div>
             <div class="body-right">
-            
+                <div class="question">
+                    <h2>What is the capital of Hawaii?</h2>
+                </div>
+                <div class="form">
+                    <form>
+                        <input type="text">
+                    </form>
+                </div>
             </div>
         </div>
 
 
     </div>
+</div>
+    
+<script src="./dist/main.js"></script>
 </body>
 
 </html>
