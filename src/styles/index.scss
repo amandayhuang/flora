@@ -99,6 +99,14 @@ body{
     /* transform: scaleX(-1); */
 }
 
+.caption{
+    top:400px;
+    left:20px;
+    font-size:14px;
+    position: relative;
+    font-family: "Times New Roman", Times, serif;
+}
+
 .appear{
     visibility: visible;
     opacity: 1;
@@ -109,15 +117,24 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width:66%;
+    width:50%;
 }
 
 .body-right{
     display: flex;
     flex-direction: column;
-    width:34%;
+    width:50%;
+    margin-top:70px;
+    margin-left:30px;
 }
 
 .score{
     position: relative;
+}
+
+.form input{
+    border-radius: 6px;
+    border: none;
+    height:30px;
+    width:230px;
 }
