@@ -1,0 +1,140 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #ffd1ed;
+    width:100%;
+    box-sizing: border-box;
+    font-family: 'Abel', sans-serif;
+}
+.container{
+    position: relative;
+    width:100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.outer-canvas{
+    position: absolute;
+    box-sizing: border-box;
+}
+.app-container{
+    position: absolute;
+    padding: 20px;
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.head-container{
+    display: flex;
+    width:100%;
+    justify-content: center;
+}
+
+.title{
+    font-family: 'Alegreya', serif;
+    font-family: 'Abel', sans-serif;
+    font-size:45px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.title i{
+    transform: rotate(20deg);
+    margin-right: 5px;
+    font-size:40px;
+}
+
+.picker{
+
+}
+
+.body-container{
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.plant{
+    position: relative;
+}
+
+.pot{
+    width:200px;
+    position: absolute;
+    top:170px;
+}
+
+.leaf{
+    width: 150px;
+    position: absolute;
+    z-index: 20;
+}
+
+.l1{
+    transform: rotate(-20deg);
+    /* visibility: hidden;
+    opacity: 0; */
+}
+
+.l2{
+    transform: rotate(10deg);
+    left:60px;
+    top:45px;
+}
+
+.l3{
+    transform: rotate(-80deg);
+    left:0px;
+    top:35px;
+}
+
+.l4{
+    transform: rotate(60deg);
+    top:55px;
+    left:90px;
+    /* transform: scaleX(-1); */
+}
+
+.caption{
+    top:400px;
+    left:20px;
+    font-size:14px;
+    position: relative;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.appear{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.body-left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:50%;
+}
+
+.body-right{
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    margin-top:70px;
+    margin-left:30px;
+}
+
+.score{
+    position: relative;
+}
+
+.form input{
+    border-radius: 6px;
+    border: none;
+    height:30px;
+    width:230px;
+}
