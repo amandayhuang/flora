@@ -5,6 +5,7 @@ import "./styles/index.scss";
 import Drop from './drop'
 import Cloud from './cloud'
 import Bolt from './bolt'
+import Sun from './sun'
 
 let sets = {
     "timesTable": timesTable,
@@ -39,6 +40,7 @@ var num = 0;
 var clouds;
 var cloudNum = 0;
 var bolts;
+var sun;
 
 // set up plant
 let pots = ['pot_1','pot_2','pot_3','pot_4'];
@@ -140,6 +142,7 @@ function handleSubmit(e){
             l4.classList.add('appear');
         }
         drops = makeDrops();
+        sun = new Sun(-100,-100,1,1,c);
         makeRain();
     }else{
         previousAnswer.innerHTML = `${currentQuestion} ✖ ${currentAnswer}`;
@@ -166,7 +169,7 @@ function summarizeAndReset(){
 }
 
 function makeDrops(){
-    let drops = [];
+    drops = [];
     for (let i = 0; i < 60; i++) {
         let x = Math.random()*canvas.width;
         let y = Math.random() - Math.random() * 400;
@@ -206,16 +209,18 @@ function makeBolts() {
 
 function makeRain(){
     c.clearRect(0, 0, canvas.width, canvas.height);
-    if(num < 270){
+    if(num < 200){
         num +=1;
         requestAnimationFrame(makeRain);
         console.log(num);
-        c.beginPath();
-        c.arc(0, 0, 130, 0, Math.PI * 2, false);
-        c.strokeStyle = 'orange';
-        c.fillStyle = 'orange';
-        c.stroke();
-        c.fill();
+        // c.beginPath();
+        // c.arc(0, 0, 160, 0, Math.PI * 2, false);
+        // c.strokeStyle = 'orange';
+        // c.fillStyle = 'orange';
+        // c.stroke();
+        // c.fill();
+        // c.drawImage(sun, 0, 0)
+        sun.update();
         for (let i = 0; i < drops.length; i++) {
             const drop = drops[i];
             drop.update();
