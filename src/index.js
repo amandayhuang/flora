@@ -42,25 +42,58 @@ var bolts;
 
 // set up plant
 let pots = ['pot_1','pot_2','pot_3','pot_4'];
-let plants = ['fiddle','snake','monstera'];
-let pot = pots[Math.floor(Math.random() * pots.length)];
-let plant = plants[Math.floor(Math.random() * plants.length)];
+let plants = [
+    { "name": 'fiddle', 'caption': 'Figure 1: Ficus lyrata' },
+    { "name": 'snake', 'caption': 'Figure 1: Dracaena trifasciata' },
+    { "name": 'monstera', 'caption': 'Figure 1: Monstera deliciosa'}
+];
 let potImage = document.getElementById('pot');
 let l1 = document.getElementById('l1');
 let l2 = document.getElementById('l2');
 let l3 = document.getElementById('l3');
 let l4 = document.getElementById('l4');
-l1.classList.add(`${plant}-l1`);
-l2.classList.add(`${plant}-l2`);
-l3.classList.add(`${plant}-l3`);
-l4.classList.add(`${plant}-l4`);
+let caption = document.getElementById('caption');
+
+var pot = pots[Math.floor(Math.random() * pots.length)];
+var plant = plants[Math.floor(Math.random() * plants.length)];
+debugger
+caption.innerHTML = plant.caption;
+l1.classList.add(`${plant.name}-l1`);
+l2.classList.add(`${plant.name}-l2`);
+l3.classList.add(`${plant.name}-l3`);
+l4.classList.add(`${plant.name}-l4`);
 potImage.src = `/src/images/${pot}.png`;
-l1.src = `/src/images/${plant}_2.png`;
-l2.src = `/src/images/${plant}_2.png`;
-l3.src = `/src/images/${plant}_1.png`;
-l4.src = `/src/images/${plant}_1.png`;
+l1.src = `/src/images/${plant.name}_2.png`;
+l2.src = `/src/images/${plant.name}_2.png`;
+l3.src = `/src/images/${plant.name}_1.png`;
+l4.src = `/src/images/${plant.name}_1.png`;
+let firstSession = true;
 
 function startSession(datasetName){
+    if(firstSession === false){
+        debugger
+        l1.classList.remove(`${plant.name}-l1`);
+        l2.classList.remove(`${plant.name}-l2`);
+        l3.classList.remove(`${plant.name}-l3`);
+        l4.classList.remove(`${plant.name}-l4`);
+        l2.classList.remove('appear');
+        l3.classList.remove('appear');
+        l4.classList.remove('appear');
+        pot = pots[Math.floor(Math.random() * pots.length)];
+        plant = plants[Math.floor(Math.random() * plants.length)];
+        caption.innerHTML = plant.caption;
+        l1.classList.add(`${plant.name}-l1`);
+        l2.classList.add(`${plant.name}-l2`);
+        l3.classList.add(`${plant.name}-l3`);
+        l4.classList.add(`${plant.name}-l4`);
+        potImage.src = `/src/images/${pot}.png`;
+        l1.src = `/src/images/${plant.name}_2.png`;
+        l2.src = `/src/images/${plant.name}_2.png`;
+        l3.src = `/src/images/${plant.name}_1.png`;
+        l4.src = `/src/images/${plant.name}_1.png`;
+        let firstSession = true;
+    }
+    firstSession = false;
     answerForm.classList.add('active');
     numCorrect = 0;
     questionIndex = 0;
@@ -97,11 +130,19 @@ function handleSubmit(e){
     if(answer.toLowerCase() === currentAnswer.toLowerCase()){
         previousAnswer.innerHTML = `${currentQuestion} ✓ ${currentAnswer}`;
         numCorrect ++;
+        if(numCorrect === 2){
+            l3.classList.add('appear');
+        }
+        if (numCorrect === 4) {
+            l2.classList.add('appear');
+        }
+        if (numCorrect === 7) {
+            l4.classList.add('appear');
+        }
         drops = makeDrops();
         makeRain();
     }else{
         previousAnswer.innerHTML = `${currentQuestion} ✖ ${currentAnswer}`;
-        //incorrect answer visual
         bolts = makeBolts();
         clouds = makeClouds();
         makeCloudsAppear();
