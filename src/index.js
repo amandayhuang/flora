@@ -4,6 +4,7 @@ import { randomizeData } from './util/util'
 import "./styles/index.scss";
 import Drop from './drop'
 import Cloud from './cloud'
+import Bolt from './bolt'
 
 let sets = {
     "timesTable": timesTable,
@@ -37,6 +38,7 @@ var drops;
 var num = 0;
 var clouds;
 var cloudNum = 0;
+var bolts;
 
 
 function startSession(datasetName){
@@ -81,6 +83,7 @@ function handleSubmit(e){
     }else{
         previousAnswer.innerHTML = `${currentQuestion} ✖ ${currentAnswer}`;
         //incorrect answer visual
+        bolts = makeBolts();
         clouds = makeClouds();
         makeCloudsAppear();
     }
@@ -128,6 +131,19 @@ function makeClouds() {
     return clouds;
 }
 
+function makeBolts() {
+    let bolts = [];
+    for (let i = 0; i < 3; i++) {
+        let x = Math.random() * 50;
+        let y = Math.random() * 50;
+        let xVel = (Math.random() + 0.5) * 6.8;
+        let yVel = (Math.random() + 0.5) * 6.8;
+        let bolt = new Bolt(x, y, xVel, yVel, c);
+        bolts.push(bolt);
+    }
+    return bolts;
+}
+
 function makeRain(){
     c.clearRect(0, 0, canvas.width, canvas.height);
     if(num < 270){
@@ -153,12 +169,16 @@ function makeRain(){
 
 function makeCloudsAppear() {
     c.clearRect(0, 0, canvas.width, canvas.height);
-    if (cloudNum < 310) {
+    if (cloudNum < 280) {
         cloudNum += 1;
         requestAnimationFrame(makeCloudsAppear);
         for (let i = 0; i < clouds.length; i++) {
             const cloud = clouds[i];
             cloud.update();
+        }
+        for (let i = 0; i < bolts.length; i++) {
+            const bolt = bolts[i];
+            bolt.update();
         }
     } else {
         c.clearRect(0, 0, canvas.width, canvas.height);

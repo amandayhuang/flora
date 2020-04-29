@@ -9,7 +9,7 @@ class Cloud {
         this.draw = () => {
             let image = new Image();
             image.src = '/src/images/cloud.png';
-            this.c.drawImage(image, this.x, this.y, 200, 120);
+            this.c.drawImage(image, this.x, this.y, 220, 127);
         }
 
         this.update = () => {
@@ -17,7 +17,6 @@ class Cloud {
                 this.xVel = -this.xVel;
             }
             if (this.y > this.c.canvas.height || this.y < 0) {
-                console.log("bounce back");
                 this.yVel = -this.yVel;
             }
             this.x += this.xVel;
