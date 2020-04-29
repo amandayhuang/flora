@@ -33,6 +33,7 @@ body{
     width:100%;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
 }
 
 .title{
@@ -75,31 +76,95 @@ body{
     z-index: 20;
 }
 
-.l1{
-    transform: rotate(-20deg);
-    top:-10px;
-    /* visibility: hidden;
-    opacity: 0; */
-}
-
-.l2{
+.monstera-l1{
     transform: rotate(10deg);
     left:60px;
     top:10px;
 }
 
-.l3{
+.monstera-l2{
     transform: rotate(-80deg);
     left:-50px;
     top:0px;
+     visibility: hidden;
+    opacity: 0;
 }
 
-.l4{
+.monstera-l3{
+    transform: rotate(-20deg);
+    top:-10px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.monstera-l4{
     transform: rotate(60deg);
     top:35px;
     left:90px;
-    /* transform: scaleX(-1); */
+     visibility: hidden;
+    opacity: 0;
 }
+
+.snake-l1{
+    left:0px;
+    top:-23px;
+    transform: rotate(-20deg);
+}
+
+.snake-l2{
+    left:55px;
+    top:-30px;
+    transform: rotate(-10deg);
+     visibility: hidden;
+    opacity: 0;
+}
+
+.snake-l3{
+    top:-35px;
+    left: 25px;
+    transform: rotate(-10deg);
+    transform: scaleX(-1);
+     visibility: hidden;
+    opacity: 0;
+}
+
+.snake-l4{
+    top:-30px;
+    left:78px;
+     visibility: hidden;
+    opacity: 0;
+}
+
+.fiddle-l1{
+    left:40px;
+    top:-35px;
+    transform: rotate(30deg);
+    transform: scaleX(-1);
+}
+
+.fiddle-l2{
+    left:-90px;
+    top:-40px;
+     visibility: hidden;
+    opacity: 0;
+}
+
+.fiddle-l3{
+    top:-10px;
+    left: 10px;
+    transform: scaleX(-1);
+    transform: rotate(-30deg);
+     visibility: hidden;
+    opacity: 0;
+}
+
+.fiddle-l4{
+    top:-10px;
+    left:100px;
+     visibility: hidden;
+    opacity: 0;
+}
+
 
 .caption{
     top:400px;

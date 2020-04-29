@@ -40,6 +40,25 @@ var clouds;
 var cloudNum = 0;
 var bolts;
 
+// set up plant
+let pots = ['pot_1','pot_2','pot_3','pot_4'];
+let plants = ['fiddle','snake','monstera'];
+let pot = pots[Math.floor(Math.random() * pots.length)];
+let plant = plants[Math.floor(Math.random() * plants.length)];
+let potImage = document.getElementById('pot');
+let l1 = document.getElementById('l1');
+let l2 = document.getElementById('l2');
+let l3 = document.getElementById('l3');
+let l4 = document.getElementById('l4');
+l1.classList.add(`${plant}-l1`);
+l2.classList.add(`${plant}-l2`);
+l3.classList.add(`${plant}-l3`);
+l4.classList.add(`${plant}-l4`);
+potImage.src = `/src/images/${pot}.png`;
+l1.src = `/src/images/${plant}_2.png`;
+l2.src = `/src/images/${plant}_2.png`;
+l3.src = `/src/images/${plant}_1.png`;
+l4.src = `/src/images/${plant}_1.png`;
 
 function startSession(datasetName){
     answerForm.classList.add('active');
@@ -136,8 +155,8 @@ function makeBolts() {
     for (let i = 0; i < 3; i++) {
         let x = Math.random() * 50;
         let y = Math.random() * 50;
-        let xVel = (Math.random() + 0.5) * 6.8;
-        let yVel = (Math.random() + 0.5) * 6.8;
+        let xVel = (Math.random() + 0.5) * 7;
+        let yVel = (Math.random() + 0.5) * 7;
         let bolt = new Bolt(x, y, xVel, yVel, c);
         bolts.push(bolt);
     }
@@ -169,7 +188,7 @@ function makeRain(){
 
 function makeCloudsAppear() {
     c.clearRect(0, 0, canvas.width, canvas.height);
-    if (cloudNum < 280) {
+    if (cloudNum < 230) {
         cloudNum += 1;
         requestAnimationFrame(makeCloudsAppear);
         for (let i = 0; i < clouds.length; i++) {
