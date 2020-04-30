@@ -1,4 +1,4 @@
-class Cloud {
+class Sun {
     constructor(x, y, xVel, yVel, c) {
         this.x = x;
         this.y = y;
@@ -8,15 +8,15 @@ class Cloud {
 
         this.draw = () => {
             let image = new Image();
-            image.src = '/src/images/cloud.png';
-            this.c.drawImage(image, this.x, this.y, 220, 127);
+            image.src = '/src/images/sun.png';
+            this.c.drawImage(image, this.x, this.y)
         }
 
         this.update = () => {
-            if(this.x > this.c.canvas.width || this.x < 0){
+            if(this.x >=0 ){
                 this.xVel = -this.xVel;
             }
-            if (this.y > this.c.canvas.height || this.y < 0) {
+            if (this.y >= 0) {
                 this.yVel = -this.yVel;
             }
             this.x += this.xVel;
@@ -27,4 +27,4 @@ class Cloud {
 
 }
 
-export default Cloud;
+export default Sun;

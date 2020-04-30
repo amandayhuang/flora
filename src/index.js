@@ -4,6 +4,8 @@ import { randomizeData } from './util/util'
 import "./styles/index.scss";
 import Drop from './drop'
 import Cloud from './cloud'
+import Bolt from './bolt'
+import Sun from './sun'
 
 let sets = {
     "timesTable": timesTable,
@@ -37,9 +39,63 @@ var drops;
 var num = 0;
 var clouds;
 var cloudNum = 0;
+var bolts;
+var sun;
 
+// set up plant
+let pots = ['pot_1','pot_2','pot_3','pot_4'];
+let plants = [
+    { "name": 'fiddle', 'caption': 'Figure 1: Ficus lyrata' },
+    { "name": 'snake', 'caption': 'Figure 1: Dracaena trifasciata' },
+    { "name": 'monstera', 'caption': 'Figure 1: Monstera deliciosa'}
+];
+let potImage = document.getElementById('pot');
+let l1 = document.getElementById('l1');
+let l2 = document.getElementById('l2');
+let l3 = document.getElementById('l3');
+let l4 = document.getElementById('l4');
+let caption = document.getElementById('caption');
+
+var pot = pots[Math.floor(Math.random() * pots.length)];
+var plant = plants[Math.floor(Math.random() * plants.length)];
+debugger
+caption.innerHTML = plant.caption;
+l1.classList.add(`${plant.name}-l1`);
+l2.classList.add(`${plant.name}-l2`);
+l3.classList.add(`${plant.name}-l3`);
+l4.classList.add(`${plant.name}-l4`);
+potImage.src = `/src/images/${pot}.png`;
+l1.src = `/src/images/${plant.name}_2.png`;
+l2.src = `/src/images/${plant.name}_2.png`;
+l3.src = `/src/images/${plant.name}_1.png`;
+l4.src = `/src/images/${plant.name}_1.png`;
+let firstSession = true;
 
 function startSession(datasetName){
+    if(firstSession === false){
+        debugger
+        l1.classList.remove(`${plant.name}-l1`);
+        l2.classList.remove(`${plant.name}-l2`);
+        l3.classList.remove(`${plant.name}-l3`);
+        l4.classList.remove(`${plant.name}-l4`);
+        l2.classList.remove('appear');
+        l3.classList.remove('appear');
+        l4.classList.remove('appear');
+        pot = pots[Math.floor(Math.random() * pots.length)];
+        plant = plants[Math.floor(Math.random() * plants.length)];
+        caption.innerHTML = plant.caption;
+        l1.classList.add(`${plant.name}-l1`);
+        l2.classList.add(`${plant.name}-l2`);
+        l3.classList.add(`${plant.name}-l3`);
+        l4.classList.add(`${plant.name}-l4`);
+        potImage.src = `/src/images/${pot}.png`;
+        l1.src = `/src/images/${plant.name}_2.png`;
+        l2.src = `/src/images/${plant.name}_2.png`;
+        l3.src = `/src/images/${plant.name}_1.png`;
+        l4.src = `/src/images/${plant.name}_1.png`;
+        let firstSession = true;
+    }
+    firstSession = false;
     answerForm.classList.add('active');
     numCorrect = 0;
     questionIndex = 0;
@@ -76,11 +132,21 @@ function handleSubmit(e){
     if(answer.toLowerCase() === currentAnswer.toLowerCase()){
         previousAnswer.innerHTML = `${currentQuestion} ✓ ${currentAnswer}`;
         numCorrect ++;
+        if(numCorrect === 2){
+            l3.classList.add('appear');
+        }
+        if (numCorrect === 4) {
+            l2.classList.add('appear');
+        }
+        if (numCorrect === 7) {
+            l4.classList.add('appear');
+        }
         drops = makeDrops();
+        sun = new Sun(-80,-80,1,1,c);
         makeRain();
     }else{
         previousAnswer.innerHTML = `${currentQuestion} ✖ ${currentAnswer}`;
-        //incorrect answer visual
+        bolts = makeBolts();
         clouds = makeClouds();
         makeCloudsAppear();
     }
@@ -103,7 +169,7 @@ function summarizeAndReset(){
 }
 
 function makeDrops(){
-    let drops = [];
+    drops = [];
     for (let i = 0; i < 60; i++) {
         let x = Math.random()*canvas.width;
         let y = Math.random() - Math.random() * 400;
@@ -128,18 +194,31 @@ function makeClouds() {
     return clouds;
 }
 
+function makeBolts() {
+    let bolts = [];
+    for (let i = 0; i < 3; i++) {
+        let x = Math.random() * 50;
+        let y = Math.random() * 50;
+        let xVel = (Math.random() + 0.5) * 7;
+        let yVel = (Math.random() + 0.5) * 7;
+        let bolt = new Bolt(x, y, xVel, yVel, c);
+        bolts.push(bolt);
+    }
+    return bolts;
+}
+
 function makeRain(){
     c.clearRect(0, 0, canvas.width, canvas.height);
-    if(num < 270){
+    if(num < 200){
         num +=1;
         requestAnimationFrame(makeRain);
-        console.log(num);
-        c.beginPath();
-        c.arc(0, 0, 130, 0, Math.PI * 2, false);
-        c.strokeStyle = 'orange';
-        c.fillStyle = 'orange';
-        c.stroke();
-        c.fill();
+        // c.beginPath();
+        // c.arc(0, 0, 160, 0, Math.PI * 2, false);
+        // c.strokeStyle = 'orange';
+        // c.fillStyle = 'orange';
+        // c.stroke();
+        // c.fill();
+        sun.update();
         for (let i = 0; i < drops.length; i++) {
             const drop = drops[i];
             drop.update();
@@ -153,12 +232,16 @@ function makeRain(){
 
 function makeCloudsAppear() {
     c.clearRect(0, 0, canvas.width, canvas.height);
-    if (cloudNum < 310) {
+    if (cloudNum < 230) {
         cloudNum += 1;
         requestAnimationFrame(makeCloudsAppear);
         for (let i = 0; i < clouds.length; i++) {
             const cloud = clouds[i];
             cloud.update();
+        }
+        for (let i = 0; i < bolts.length; i++) {
+            const bolt = bolts[i];
+            bolt.update();
         }
     } else {
         c.clearRect(0, 0, canvas.width, canvas.height);
