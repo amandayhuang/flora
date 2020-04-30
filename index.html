@@ -15,16 +15,16 @@
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
     <title>flora</title>
+
 </head>
 
 <body>
 <div class="container">
-    <canvas class="outer-canvas">
-    </canvas>
+    <canvas class="outer-canvas"></canvas>
     <div class="app-container">
         <div class="head-container">
             <div class="title">
-                <i class="fas fa-seedling"></i> flora 
+                <a href= ""><i class="fas fa-seedling"></i> flora </a>
             </div>
             <div class="picker">
                 <form id='picker-form'>
@@ -37,16 +37,19 @@
                 </form>
             </div>
         </div>
+        <div>
+            a plant based study regimen by Amanda Huang <a href="https://github.com/amandayhuang/" target="_blank"><i class="fab fa-github link"></i></a><a href="https://www.linkedin.com/in/amandayhuang" target="_blank"><i class="fab fa-linkedin link"></i></a><a href="https://angel.co/u/ayh" target="_blank"></i><i class="fab fa-angellist link"></i></a>
+        </div>
 
         <div class="body-container">
             <div class="body-left">
             <!-- <canvas class="inner-canvas"></canvas>     -->
                 <div class="plant" id='plant-container'>
-                    <img class="pot" id='pot' src="/src/images/pot_2.png">
-                    <img id='l3' class="leaf" src="/src/images/monstera_1.png">
-                    <img id='l4' class="leaf" src="/src/images/monstera_1.png">
-                    <img id='l1' class="leaf" src="/src/images/monstera_2.png">
-                    <img id='l2' class="leaf" src="/src/images/monstera_2.png">
+                    <img class="pot" id='pot' src="../src/images/pot_2.png">
+                    <img id='l3' class="leaf" src="../src/images/monstera_1.png">
+                    <img id='l4' class="leaf" src="../src/images/monstera_1.png">
+                    <img id='l1' class="leaf" src="../src/images/monstera_2.png">
+                    <img id='l2' class="leaf" src="../src/images/monstera_2.png">
                     <p class="caption" id='caption'></p>
                 </div>
             </div>
@@ -71,11 +74,8 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
-    
 <script src="./dist/main.js"></script>
 </body>
 

@@ -58,22 +58,20 @@ let caption = document.getElementById('caption');
 
 var pot = pots[Math.floor(Math.random() * pots.length)];
 var plant = plants[Math.floor(Math.random() * plants.length)];
-debugger
 caption.innerHTML = plant.caption;
 l1.classList.add(`${plant.name}-l1`);
 l2.classList.add(`${plant.name}-l2`);
 l3.classList.add(`${plant.name}-l3`);
 l4.classList.add(`${plant.name}-l4`);
-potImage.src = `/src/images/${pot}.png`;
-l1.src = `/src/images/${plant.name}_2.png`;
-l2.src = `/src/images/${plant.name}_2.png`;
-l3.src = `/src/images/${plant.name}_1.png`;
-l4.src = `/src/images/${plant.name}_1.png`;
+potImage.src = `../src/images/${pot}.png`;
+l1.src = `../src/images/${plant.name}_2.png`;
+l2.src = `../src/images/${plant.name}_2.png`;
+l3.src = `../src/images/${plant.name}_1.png`;
+l4.src = `../src/images/${plant.name}_1.png`;
 let firstSession = true;
 
 function startSession(datasetName){
     if(firstSession === false){
-        debugger
         l1.classList.remove(`${plant.name}-l1`);
         l2.classList.remove(`${plant.name}-l2`);
         l3.classList.remove(`${plant.name}-l3`);
@@ -88,11 +86,11 @@ function startSession(datasetName){
         l2.classList.add(`${plant.name}-l2`);
         l3.classList.add(`${plant.name}-l3`);
         l4.classList.add(`${plant.name}-l4`);
-        potImage.src = `/src/images/${pot}.png`;
-        l1.src = `/src/images/${plant.name}_2.png`;
-        l2.src = `/src/images/${plant.name}_2.png`;
-        l3.src = `/src/images/${plant.name}_1.png`;
-        l4.src = `/src/images/${plant.name}_1.png`;
+        potImage.src = `../src/images/${pot}.png`;
+        l1.src = `../src/images/${plant.name}_2.png`;
+        l2.src = `../src/images/${plant.name}_2.png`;
+        l3.src = `../src/images/${plant.name}_1.png`;
+        l4.src = `../src/images/${plant.name}_1.png`;
         let firstSession = true;
     }
     firstSession = false;
