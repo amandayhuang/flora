@@ -52,6 +52,13 @@ body{
     font-size:40px;
 }
 
+.title a{
+    text-decoration: none;
+}
+.title a:visited{
+    color:black;
+}
+
 #picker-form{
     margin-left:20px;
 }
