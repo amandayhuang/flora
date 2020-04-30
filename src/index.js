@@ -149,7 +149,6 @@ function handleSubmit(e){
         makeCloudsAppear();
     }
 
-    
     let percent = Math.round(numCorrect/questionIndex*100);
     if(questionIndex < dataset.length){
         scoreBox.innerHTML = `${numCorrect} correct of ${questionIndex} (${percent}%)`;
@@ -210,12 +209,6 @@ function makeRain(){
     if(num < 200){
         num +=1;
         requestAnimationFrame(makeRain);
-        // c.beginPath();
-        // c.arc(0, 0, 160, 0, Math.PI * 2, false);
-        // c.strokeStyle = 'orange';
-        // c.fillStyle = 'orange';
-        // c.stroke();
-        // c.fill();
         sun.update();
         for (let i = 0; i < drops.length; i++) {
             const drop = drops[i];
@@ -246,24 +239,3 @@ function makeCloudsAppear() {
         cloudNum = 0;
     }
 }
-
-
-
-
-// window.addEventListener("DOMContentLoaded", () => {
-//     const header = document.createElement("h1");
-//     let canvas = document.querySelector('canvas');
-//     const c = canvas.getContext('2d');
-//     c.fillStyle = "pink";
-//     c.fillRect(100,100,50,50);
-//     c.fillRect(10, 10, 30, 30);
-//     c.fillRect(20, 20, 30, 30);
-//     c.fillRect(30, 30, 30, 30);
-//     c.beginPath();
-//     c.moveTo(50,80);
-//     c.lineTo(80,190);
-//     c.strokeStyle = "pink";
-//     c.stroke();
-//     document.body.append(header);
-//     header.innerHTML = "Hello friend";
-// });

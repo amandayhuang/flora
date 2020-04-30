@@ -103,23 +103,6 @@ var _testObj$key;
 // console.log(timesTable[0]);
 // console.log("hello!!");
 
-var testObj = {
-  key1: "hi",
-  key2: {
-    key3: "Hello"
-  }
-};
-var greeting = (testObj === null || testObj === void 0 ? void 0 : (_testObj$key = testObj.key2) === null || _testObj$key === void 0 ? void 0 : _testObj$key.key3) || testObj.key1;
-window.addEventListener("DOMContentLoaded", function () {
-  document.body.classList.add("center");
-  var card = document.createElement("div");
-  card.classList.add("card", "center");
-  card.innerHTML = "<h2>".concat(greeting, " World!</h2>");
-  document.body.append(card);
-  var imgCard = document.createElement("div");
-  imgCard.classList.add("card", "center", "image-card");
-  document.body.appendChild(imgCard);
-});
 
 /***/ }),
 
