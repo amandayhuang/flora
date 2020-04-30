@@ -1,4 +1,4 @@
-# Flora App
+# Flora
 
 ## Background & Overview
 Flora is an app that makes it more fun for students to memorize common topics likes multiplication tables and state capitals.
@@ -19,6 +19,7 @@ Flora is an app that makes it more fun for students to memorize common topics li
 * JavaScript
 * HTML/CSS
 * Canvas
+* Plant illustrations by [Terry Huang](http://terrykhuang.com/)
 
 ## Implementation Timeline
 Mon, Apr 27
