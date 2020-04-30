@@ -1,5 +1,6 @@
 import timesTable from './datasets/times_table';
 import stateCapitals from './datasets/state_capitals';
+import periodicTable from './datasets/periodic_table';
 import { randomizeData } from './util/util'
 import "./styles/index.scss";
 import Drop from './drop'
@@ -10,7 +11,8 @@ import Result from './result'
 
 let sets = {
     "timesTable": timesTable,
-    "stateCapitals": stateCapitals
+    "stateCapitals": stateCapitals,
+    "periodicTable": periodicTable
 }
 
 //set up canvas
