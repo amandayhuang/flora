@@ -11,6 +11,8 @@ body{
     width:100%;
     height: 100%;
     box-sizing: border-box;
+    display:flex;
+    flex-direction: column;
 }
 
 .outer-canvas{
@@ -267,4 +269,21 @@ hr{
 
 .active{
     display: inline-block;
+}
+
+.link{
+    font-size:20px;
+    color:black;
+    padding: 0 5px;
+}
+
+.links{
+    margin-top:5px;
+    padding-top:5px;
+    align-self: initial;
+}
+
+.link:hover{
+    cursor: pointer;
+    color: #6F787E;
 }

@@ -58,7 +58,6 @@ let caption = document.getElementById('caption');
 
 var pot = pots[Math.floor(Math.random() * pots.length)];
 var plant = plants[Math.floor(Math.random() * plants.length)];
-debugger
 caption.innerHTML = plant.caption;
 l1.classList.add(`${plant.name}-l1`);
 l2.classList.add(`${plant.name}-l2`);
@@ -73,7 +72,6 @@ let firstSession = true;
 
 function startSession(datasetName){
     if(firstSession === false){
-        debugger
         l1.classList.remove(`${plant.name}-l1`);
         l2.classList.remove(`${plant.name}-l2`);
         l3.classList.remove(`${plant.name}-l3`);
