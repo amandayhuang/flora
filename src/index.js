@@ -142,7 +142,7 @@ function handleSubmit(e){
             l4.classList.add('appear');
         }
         drops = makeDrops();
-        sun = new Sun(-100,-100,1,1,c);
+        sun = new Sun(-80,-80,1,1,c);
         makeRain();
     }else{
         previousAnswer.innerHTML = `${currentQuestion} ✖ ${currentAnswer}`;
@@ -212,14 +212,12 @@ function makeRain(){
     if(num < 200){
         num +=1;
         requestAnimationFrame(makeRain);
-        console.log(num);
         // c.beginPath();
         // c.arc(0, 0, 160, 0, Math.PI * 2, false);
         // c.strokeStyle = 'orange';
         // c.fillStyle = 'orange';
         // c.stroke();
         // c.fill();
-        // c.drawImage(sun, 0, 0)
         sun.update();
         for (let i = 0; i < drops.length; i++) {
             const drop = drops[i];
