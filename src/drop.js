@@ -16,7 +16,7 @@ class Drop {
             // this.c.fill();
 
             let image = new Image();
-            image.src = '/src/images/drop.png';
+            image.src = '../src/images/drop.png';
             image.classList.add('drop');
             this.c.drawImage(image,this.x, this.y, 50, 70)
         }
