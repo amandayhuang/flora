@@ -13,7 +13,6 @@ class Bolt {
         }
 
         this.update = () => {
-            console.log("updating bolt");
             this.x += this.xVel;
             this.y += this.yVel;
             this.draw();

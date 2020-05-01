@@ -1,15 +1,18 @@
 import timesTable from './datasets/times_table';
 import stateCapitals from './datasets/state_capitals';
+import periodicTable from './datasets/periodic_table';
 import { randomizeData } from './util/util'
 import "./styles/index.scss";
 import Drop from './drop'
 import Cloud from './cloud'
 import Bolt from './bolt'
 import Sun from './sun'
+import Result from './result'
 
 let sets = {
     "timesTable": timesTable,
-    "stateCapitals": stateCapitals
+    "stateCapitals": stateCapitals,
+    "periodicTable": periodicTable
 }
 
 //set up canvas
@@ -41,6 +44,7 @@ var clouds;
 var cloudNum = 0;
 var bolts;
 var sun;
+var result;
 
 // set up plant
 let pots = ['pot_1','pot_2','pot_3','pot_4'];
@@ -146,6 +150,7 @@ function handleSubmit(e){
         previousAnswer.innerHTML = `${currentQuestion} ✖ ${currentAnswer}`;
         bolts = makeBolts();
         clouds = makeClouds();
+        result = new Result(canvas.width / 2-50, canvas.height / 2-50, 0, 0, c, 'src/images/incorrect.png');
         makeCloudsAppear();
     }
 
@@ -207,6 +212,8 @@ function makeBolts() {
 function makeRain(){
     c.clearRect(0, 0, canvas.width, canvas.height);
     if(num < 200){
+        c.fillStyle = '#daffc4';
+        c.fillRect(0, 0, window.innerWidth, window.innerHeight);
         num +=1;
         requestAnimationFrame(makeRain);
         sun.update();
@@ -224,6 +231,8 @@ function makeRain(){
 function makeCloudsAppear() {
     c.clearRect(0, 0, canvas.width, canvas.height);
     if (cloudNum < 230) {
+        c.fillStyle = '#ff9191';
+        c.fillRect(0,0,window.innerWidth,window.innerHeight);
         cloudNum += 1;
         requestAnimationFrame(makeCloudsAppear);
         for (let i = 0; i < clouds.length; i++) {
@@ -234,6 +243,7 @@ function makeCloudsAppear() {
             const bolt = bolts[i];
             bolt.update();
         }
+        // result.update();
     } else {
         c.clearRect(0, 0, canvas.width, canvas.height);
         cloudNum = 0;
