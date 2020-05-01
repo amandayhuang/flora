@@ -2,7 +2,7 @@
   "name": "js-app",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "index.js",
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -35,6 +35,11 @@
     "start": "webpack-dev-server --config webpack.dev.js",
     "webpack:watch": "webpack --watch --config webpack.dev.js",
     "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize",
-    "build:watch": "webpack --watch --mode=development"
+    "build:watch": "webpack --watch --mode=development",
+    "postinstall": "webpack"
+  },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
   }
 }
