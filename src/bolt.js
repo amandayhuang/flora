@@ -8,7 +8,7 @@ class Bolt {
 
         this.draw = () => {
             let image = new Image();
-            image.src = '../src/images/bolt.png';
+            image.src = 'src/images/bolt.png';
             this.c.drawImage(image, this.x, this.y, 80, 200);
         }
 

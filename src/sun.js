@@ -8,7 +8,7 @@ class Sun {
 
         this.draw = () => {
             let image = new Image();
-            image.src = '../src/images/sun.png';
+            image.src = 'src/images/sun.png';
             this.c.drawImage(image, this.x, this.y)
         }
 

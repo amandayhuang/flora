@@ -8,7 +8,7 @@ class Cloud {
 
         this.draw = () => {
             let image = new Image();
-            image.src = '../src/images/cloud.png';
+            image.src = 'src/images/cloud.png';
             this.c.drawImage(image, this.x, this.y, 220, 127);
         }
 
