@@ -1,0 +1,296 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #ffd1ed;
+    width:100%;
+    box-sizing: border-box;
+    font-family: 'Abel', sans-serif;
+}
+.container{
+    position: relative;
+    width:100%;
+    height: 100%;
+    box-sizing: border-box;
+    display:flex;
+    flex-direction: column;
+}
+
+.outer-canvas{
+    position: absolute;
+    box-sizing: border-box;
+}
+.app-container{
+    position: absolute;
+    padding: 20px;
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.head-container{
+    display: flex;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.title{
+    font-family: 'Alegreya', serif;
+    font-family: 'Abel', sans-serif;
+    font-size:45px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.title i{
+    transform: rotate(20deg);
+    margin-right: 5px;
+    font-size:40px;
+}
+
+.title a{
+    text-decoration: none;
+}
+.title a:visited{
+    color:black;
+}
+
+#picker-form{
+    margin-left:20px;
+}
+
+.body-container{
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.plant{
+    position: relative;
+}
+
+.pot{
+    width:200px;
+    position: absolute;
+    top:170px;
+}
+
+.leaf{
+    height: 280px;
+    position: absolute;
+    z-index: 20;
+}
+
+.monstera-l1{
+    transform: rotate(10deg);
+    left:60px;
+    top:10px;
+}
+
+.monstera-l2{
+    transform: rotate(-80deg);
+    left:-50px;
+    top:0px;
+     visibility: hidden;
+    opacity: 0;
+}
+
+.monstera-l3{
+    transform: rotate(-20deg);
+    top:-10px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.monstera-l4{
+    transform: rotate(60deg);
+    top:35px;
+    left:90px;
+     visibility: hidden;
+    opacity: 0;
+}
+
+.snake-l1{
+    left:0px;
+    top:-23px;
+    transform: rotate(-20deg);
+}
+
+.snake-l2{
+    left:55px;
+    top:-30px;
+    transform: rotate(-10deg);
+     visibility: hidden;
+    opacity: 0;
+}
+
+.snake-l3{
+    top:-35px;
+    left: 25px;
+    transform: rotate(-10deg);
+    transform: scaleX(-1);
+     visibility: hidden;
+    opacity: 0;
+}
+
+.snake-l4{
+    top:-30px;
+    left:78px;
+     visibility: hidden;
+    opacity: 0;
+}
+
+.fiddle-l1{
+    left:40px;
+    top:-35px;
+    transform: rotate(30deg);
+    transform: scaleX(-1);
+}
+
+.fiddle-l2{
+    left:-90px;
+    top:-40px;
+     visibility: hidden;
+    opacity: 0;
+}
+
+.fiddle-l3{
+    top:-10px;
+    left: 10px;
+    transform: scaleX(-1);
+    transform: rotate(-30deg);
+     visibility: hidden;
+    opacity: 0;
+}
+
+.fiddle-l4{
+    top:-10px;
+    left:100px;
+     visibility: hidden;
+    opacity: 0;
+}
+
+
+.caption{
+    top:400px;
+    left:20px;
+    font-size:14px;
+    position: relative;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.appear{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.body-left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:50%;
+}
+
+.body-right{
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    margin-top:70px;
+    margin-left:30px;
+}
+
+.score{
+    position: relative;
+}
+
+.form{
+    display:none;
+}
+
+.form input{
+    border-radius: 6px;
+    border: none;
+    height:40px;
+    width:230px;
+    padding:0 10px;
+    font-size:15px;
+}
+
+.drop{
+    z-index: 30;
+}
+
+
+canvas{
+    /* z-index: 30; */
+}
+
+button, select{
+    border:none;
+    padding:5px 12px;
+    box-sizing: border-box;
+    height:40px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    margin:5px;
+    font-family: 'Manrope', sans-serif;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #1f1f1f;
+    color:white;
+}
+
+select:hover{
+    cursor: pointer;
+}
+
+#previous{
+    padding:10px;
+    border: 1px solid #8a8a8a;
+    border-radius: 6px;
+    width: 315px;
+    color: #8a8a8a;
+    margin-top:15px;
+}
+
+.previous{
+    display:none;
+}
+
+#previous h4{
+    color: black;
+}
+
+hr{
+    border:none;
+    border-top: 1px solid #8a8a8a;
+}
+
+.active{
+    display: inline-block;
+}
+
+.link{
+    font-size:20px;
+    color:black;
+    padding: 0 5px;
+}
+
+.links{
+    margin-top:5px;
+    padding-top:5px;
+    align-self: initial;
+}
+
+.link:hover{
+    cursor: pointer;
+    color: #6F787E;
+}

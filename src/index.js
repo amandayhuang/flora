@@ -68,10 +68,10 @@ l2.classList.add(`${plant.name}-l2`);
 l3.classList.add(`${plant.name}-l3`);
 l4.classList.add(`${plant.name}-l4`);
 potImage.src = `src/images/${pot}.png`;
-l1.src = `../src/images/${plant.name}_2.png`;
-l2.src = `../src/images/${plant.name}_2.png`;
-l3.src = `../src/images/${plant.name}_1.png`;
-l4.src = `../src/images/${plant.name}_1.png`;
+l1.src = `src/images/${plant.name}_2.png`;
+l2.src = `src/images/${plant.name}_2.png`;
+l3.src = `src/images/${plant.name}_1.png`;
+l4.src = `src/images/${plant.name}_1.png`;
 let firstSession = true;
 
 function startSession(datasetName){
