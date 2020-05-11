@@ -113,7 +113,7 @@ function setQuestion(){
     questionIndex++;
     currentQuestion = dataset[questionIndex-1].question;
     currentAnswer = dataset[questionIndex-1].answer.toString();
-    questionText.innerHTML = `${currentQuestion} (${questionIndex} of ${dataset.length})`;
+    questionText.innerHTML = `${currentQuestion} (Question ${questionIndex} of ${dataset.length})`;
 }
 
 function handlePicker(e){
