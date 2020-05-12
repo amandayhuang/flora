@@ -298,5 +298,5 @@ hr{
 .footer{
     position: absolute;
     left: 550px;
-    top: 520px;
+    bottom: 15px;
 }
